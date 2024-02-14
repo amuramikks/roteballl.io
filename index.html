@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анимация открытки</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
+  <style>
+   body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      margin: 0;
+      background-color: #ebdde4;
+      overflow: hidden;
+    }
+
+    .card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #e5caeb;
+      color: #000000;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: transform 0.5s ease-in-out;
+      font-size: 14px;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .button:hover {
+      transform: translateX(-50%) translateY(-5px);
+    }
+
+    .button:active {
+      background-color: #e5caeb;
+    }
+
+    @keyframes floatAnimation {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .button:active {
+      background-color: #e5caeb;
+    }
+
+    .text-container {
+      position: absolute;
+      top: 97px;
+      left: 50%;
+      width: 80%;
+      text-align: center;
+      opacity: 0;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    @keyframes textAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .gif-container {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      display: none;
+    }
+
+    .gif {
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+      border-radius: 5px;
+      margin-top: 282px;
+      font-size: 40;
+    }
+    
+    .start-gif {
+      display: block;
+      margin: 0 auto;
+      width: 250px; /* Измените размер по вашему усмотрению */
+      height: auto; /* Автоматическое масштабирование высоты */
+      border-radius: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .meunu {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    
+    .h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 24px;
+      color: #000000;
+      margin: 0;
+      padding: 10px;
+    }
+    
+    .modern {
+      animation: floatAnimation 2s infinite alternate;
+      opacity: 1;
+    }
+    
+    @keyframes floatAnimation {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    @keyframes explodeAnimation {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(5);
+        opacity: 0;
+      }
+    }
+    
+    .explode {
+      animation: explodeAnimation 2s ease-in-out;
+    }
+
+    .explosion-gif {
+      width: 150px; /* Измените размер по вашему усмотрению */
+      height: auto; /* Автоматическое масштабирование высоты */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: url('./explosion.gif') no-repeat center center;
+      background-size: cover;
+      opacity: 0; /* Начальная прозрачность */
+      animation: explosionGifAnimation 2s ease-in-out;
+    }
+
+    @keyframes explosionGifAnimation {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="meunu">
+    <div class="h2">
+        <p class="modern">NE SMOTRI TAK YA STENYAUSA!</p>
+    </div>
+</div>
+<div class="card">
+  <div class="stairs"></div>
+  <img class="gif start-gif" src="./J2iMRVK.gif" alt="GIF Start">
+  <button class="button" onclick="animateContent()">Нажми меня</button>
+  <div class="text-container" id="textContainer">
+    <p>Я Рожаю Член!</p>
+  </div>
+  <div class="gif-container" id="gifContainer">
+    <img class="gif" src="./kats_ass.gif" alt="GIF 1">
+    <img class="gif" src="./mochi-mochi-peach-cat-tap-butt.gif" alt="GIF 2">
+    <img class="gif" src="./3ce884bb29ad1909a2c253354497420f.gif" alt="GIF 3">
+    <div class="explosion-gif"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('mousemove', function (event) {
+    var mouseX = event.clientX;
+    var mouseY = event.clientY;
+
+    // Плавающий эффект для всей страницы
+    document.body.style.transform = 'translate(' + (mouseX / window.innerWidth - 0.5) * 10 + 'px, ' + (mouseY / window.innerHeight - 0.5) * 10 + 'px)';
+
+    // Плавающий эффект для текста
+    var textContainer = document.getElementById('textContainer');
+    var textOffsetX = (mouseX / window.innerWidth - 0.5) * 30;
+    var textOffsetY = (mouseY / window.innerHeight - 0.5) * 30;
+    textContainer.style.transform = 'translate(-50%, -50%) translate(' + textOffsetX + 'px, ' + textOffsetY + 'px)';
+
+    // Плавающий эффект для gif-контейнера
+    var gifContainer = document.getElementById('gifContainer');
+    var gifOffsetX = (mouseX / window.innerWidth - 0.5) * 20;
+    var gifOffsetY = (mouseY / window.innerHeight - 0.5) * 20;
+    gifContainer.style.transform = 'translate(-50%, -50%) translate(' + gifOffsetX + 'px, ' + gifOffsetY + 'px)';
+  });
+
+  function animateContent() {
+    var startGif = document.querySelector('.start-gif');
+    startGif.style.animation = 'textAnimation 2s forwards';
+    startGif.style.display = 'none';
+
+    var textContainer = document.getElementById('textContainer');
+    textContainer.style.animation = 'textAnimation 2s forwards';
+
+    var gifContainer = document.getElementById('gifContainer');
+    gifContainer.style.display = 'flex';
+
+    var button = document.querySelector('.button');
+    button.style.display = 'none'; // Скрыть текущую кнопку
+
+    // Добавить класс для анимации взрыва
+    var card = document.querySelector('.card');
+    card.classList.add('explode');
+
+    // Создать новую кнопку для перехода на другую страницу
+    var newButton = document.createElement('button');
+    newButton.textContent = 'Если ты нажмешь, я описаюсь';
+    newButton.classList.add('button');
+    newButton.addEventListener('click', function () {
+      window.location.href = 'test.html'; // Замените ссылку на свою
+    });
+
+    // Показать гифку взрыва
+    var explosionGif = document.querySelector('.explosion-gif');
+    explosionGif.style.opacity = '1';
+
+    card.appendChild(explosionGif);
+    card.appendChild(newButton);
+
+    // Удалить класс explode через 2 секунды (длительность анимации взрыва)
+    setTimeout(function () {
+      card.classList.remove('explode');
+      explosionGif.style.opacity = '0';
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
